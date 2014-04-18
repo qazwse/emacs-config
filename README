@@ -1,0 +1,5 @@
+This is my current emacs configuration.
+
+It uses Cask to grab all of my dependencies, so make sure that's installed.
+
+The files are organized in .org files, which compile to .el.
