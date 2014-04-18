@@ -1,0 +1,58 @@
+#+TITLE: Power.org
+
+* Contains
+Power user tools for Emacs
+
+* Config
+** Autocomplete
+#+begin_src emacs-lisp
+  (use-package auto-complete-config
+    :init
+    (progn
+      (ac-config-default)
+      (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+      (bind-key "M-k" 'ac-next ac-menu-map)
+      (bind-key "M-i" 'ac-previous ac-menu-map)))
+#+end_src
+
+** Yasnippet
+Snippets ahoy!
+
+Popup code gotten from [[http://iany.me/2012/03/use-popup-isearch-for-yasnippet-prompt/][here]].
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :init
+    (progn
+      (yas-global-mode 1)
+
+      (defun yas/popup-isearch-prompt (prompt choices &optional display-fn)
+        (when (featurep 'popup)
+          (popup-menu*)
+           (mapcar
+            (lambda (choice)
+              (popup-make-item
+               (or (and display-fn (funcall display-fn choice))
+                   choice)
+               :value choice))
+            choices)
+           :prompt prompt
+
+           ;; start isearch mode right away
+           :isearch t)))
+      (setq yas/prompt-functions '(yas/popup-isearch-prompt yas/no-prompt)))
+#+end_src
+
+** Projectile
+Project management, might be okay.
+#+begin_src emacs-lisp :tangle yes
+  (projectile-global-mode)
+  (setq projectile-enable-caching t)
+#+end_src
+** Flycheck
+Automatic sytax checking and all that jazz.
+#+begin_src emacs-lisp :tangle yes
+  (use-package flycheck
+    :init
+    (progn
+      (global-flycheck-mode)))
+#+end_src

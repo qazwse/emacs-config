@@ -1,0 +1,39 @@
+Contains settings that have to do with how Emacs looks. Colour scheme, tool and scroll bar appearance, that sort of thing.
+* Config
+** Colour Scheme
+Using Solarized dark because it's my favourite.
+#+begin_src emacs-lisp
+  (load-theme 'solarized-dark t)
+#+end_src
+** Font
+#+begin_src emacs-lisp
+  (if (member "Droid Sans Mono" (font-family-list))
+      (set-face-attribute
+       'default nil :font "Droid Sans Mono 10"))
+#+end_src
+** Editing
+Line highlight, number lines, that sort of thing.
+#+begin_src emacs-lisp
+  ;; Highlight the current line
+  (global-hl-line-mode t)
+#+end_src
+** GUI
+I like GUIs.
+#+begin_src emacs-lisp
+  ;; I like the scrollbar and the menubar. The scrollbar because it's easy to visualize how big a document is, and where you are in it. The menubar because it helps discoverability, especially with new packages. The toolbar can get out.
+  (tool-bar-mode -1)
+
+  ;; Popwin, stop temporary buffers from being permanent
+  (use-package popwin
+   :init
+   (progn
+    (popwin-mode t)))
+#+end_src
+** Rainbow-delimiters
+Rainbow-delimiters is a “rainbow parentheses”-like mode which highlights parentheses, brackets, and braces according to their depth.
+#+begin_src emacs-lisp :tangle yes
+  (use-package rainbow-delimiters
+   :init
+   (progn
+    (global-rainbow-delimiters-mode)))
+#+end_src

@@ -1,0 +1,56 @@
+#+TITLE: Basic.org
+
+* Contains
+Contains all of the "required" Emacs changes, usually small in nature.
+
+* Config
+** Small Changes
+Settings such as changing the default text encoding, disabling the bell, etc.
+#+begin_src emacs-lisp
+  ;; Best practice
+  (set-language-environment "UTF-8")
+
+  ;; Y or N instead of Yes or No
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; Add a newline to the end of a file in one doesn't exist
+  (setq require-final-newline t)
+
+  ;; Remove trailing whitespace on save
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+  ;; No beeping
+  (setq ring-bell-function 'ignore)
+
+  ;; Move through camelCase
+  (global-subword-mode t)
+
+  ;; No splash screen pls
+  (setq inhibit-startup-screen t)
+
+  ;; Fundamental mode should be replaced with text mode
+  ;; Don't know if this works the way I want it to.
+  ;; (setq-default major-mode 'text-mode)
+
+  ;; Delete selection on keypress
+  (delete-selection-mode t)
+#+end_src
+** Uniquify
+DISABLED: Not on repos
+Better naming scheme for files
+#+begin_src emacs-lisp
+  ;; (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  ;; (use-package uniquify)
+#+end_src
+** Backup location
+Make emacs store backups in .emacs.d/backups
+#+begin_src emacs-lisp
+  (setq x-select-enable-clipboard t
+        x-select-enable-primary t
+        save-interprogram-paste-before-kill t
+        apropos-do-all t
+        mouse-yank-at-point t
+        save-place-file (concat user-emacs-directory "places")
+        backup-directory-alist `(("." . ,(concat user-emacs-directory
+                                                 "backups"))))
+#+end_src

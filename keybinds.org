@@ -1,0 +1,26 @@
+#+TITLE: Keybinds.org
+
+* Contains
+Why, keyboard shortcuts of course!
+
+I'm not sure if I should put package specific keybinds here. Currently they are located where the package is initialized.
+
+* Config
+** New Enter behaviour
+I want Emacs to insert a newline and move to the correct indentation.
+#+begin_src emacs-lisp
+  (global-set-key (kbd "RET") 'newline-and-indent)
+#+end_src
+** Evil
+   So I'm considering using Evil. If that comes to pass I'll put it here.
+   Requires undo-tree, so put it here.
+   #+begin_src emacs-lisp
+     (use-package undo-tree
+       :init
+       (progn
+         global-undo-tree-mode))
+
+     (use-package evil
+       :init
+       (evil-mode 1))
+   #+end_src

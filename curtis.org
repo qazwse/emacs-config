@@ -1,0 +1,35 @@
+#+TITLE: Curtis Ramussen's Emacs Config
+
+* Configuration
+Located in .emacs.d, loaded in init.el
+
+** Personal information
+#+begin_src emacs-lisp
+  (setq user-full-name "Curtis Rasmussen"
+        user-mail-address "crasmuss@uoguelph.ca")
+#+end_src
+
+** Emacs Package Mangagement
+*** Cask + Pallet
+Package updates and autodownloading joy :D
+I don't know if this will ever work on Windows though. Hmmmm...
+#+begin_src emacs-lisp
+  (require 'cask "~/.cask/cask.el")
+  (cask-initialize)
+  (require 'pallet)
+#+end_src
+*** use-package
+[[https://github.com/jwiegley/use-package][use-package]]
+Better than (require)! Make sure to use this.
+#+begin_src emacs-lisp
+  (require 'use-package)
+  (require 'bind-key)
+#+end_src
+** Load Settings
+#+begin_src emacs-lisp
+  (load-org "basic.org")
+  (load-org "appearance.org")
+  (load-org "keybinds.org")
+  (load-org "langs.org")
+  (load-org "power.org")
+#+end_src

@@ -1,0 +1,13 @@
+#+TITLE: Langs.org
+
+* Contains
+Program language specific packages and features.
+
+* Config
+** Emacs-Lisp
+*** ElDoc
+#+begin_src emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+#+end_src
