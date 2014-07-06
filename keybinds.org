@@ -11,16 +11,16 @@ I want Emacs to insert a newline and move to the correct indentation.
 #+begin_src emacs-lisp
   (global-set-key (kbd "RET") 'newline-and-indent)
 #+end_src
+** Godmode
+Instead of Evil let's try godmode - modal Emacs bindings
+#+begin_src emacs-lisp
+  (use-package god-mode)
+#+end_src
 ** Evil
    So I'm considering using Evil. If that comes to pass I'll put it here.
    Requires undo-tree, so put it here.
    #+begin_src emacs-lisp
-     (use-package undo-tree
-       :init
-       (progn
-         global-undo-tree-mode))
-
-     (use-package evil
-       :init
-       (evil-mode 1))
+     ;; (use-package evil
+     ;;   :init
+     ;;   (evil-mode 1))
    #+end_src

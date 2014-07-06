@@ -54,3 +54,7 @@ Make emacs store backups in .emacs.d/backups
         backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups"))))
 #+end_src
+** Ido-mode
+#+begin_src emacs-lisp
+  (ido-mode t)
+#+end_src
